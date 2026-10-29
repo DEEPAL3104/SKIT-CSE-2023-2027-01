@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Engagement AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">SE</div>
+        <div>
+          <strong>EngageAI</strong>
+          <span>Student Analytics</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-section="dashboard"><span>⌂</span> Dashboard</button>
+        <button class="nav-item" data-section="live"><span>◉</span> Live Analysis</button>
+        <button class="nav-item" data-section="video"><span>▶</span> Video Analysis</button>
+        <button class="nav-item" data-section="reports"><span>▤</span> Reports</button>
+      </nav>
+
+      <div class="sidebar-card">
+        <span class="mini-label">MODEL STATUS</span>
+        <div class="status-row"><i class="dot"></i> Detection engine ready</div>
+        <p>Eye gaze + facial emotion analysis</p>
+      </div>
+
+      <div class="sidebar-footer">Final Year Project · CSE (AI)</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">AI-POWERED CLASSROOM ANALYTICS</p>
+          <h1 id="pageTitle">Engagement Dashboard</h1>
+        </div>
+        <div class="top-actions">
+          <span class="live-badge"><i class="dot"></i> System Ready</span>
+          <button class="avatar">SA</button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="page-section active-section">
+        <div class="hero">
+          <div>
+            <span class="pill">SESSION OVERVIEW</span>
+            <h2>Understand attention beyond attendance.</h2>
+            <p>Combine eye-gaze and facial-emotion signals to visualize student engagement during learning sessions.</p>
+          </div>
+          <button class="primary-btn" data-goto="live">Start Live Analysis <span>→</span></button>
+        </div>
+
+        <div class="metrics">
+          <article class="metric-card">
+            <div class="metric-icon blue">◎</div>
+            <div><span>Engagement Score</span><strong id="engagementScore">82%</strong><small>+6.4% vs previous session</small></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon green">◉</div>
+            <div><span>On-Screen Focus</span><strong id="focusScore">78%</strong><small>Eye-gaze signal</small></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon purple">☺</div>
+            <div><span>Positive Emotion</span><strong>64%</strong><small>Facial emotion signal</small></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon orange">◷</div>
+            <div><span>Session Duration</span><strong>42:18</strong><small>Current analysis</small></div>
+          </article>
+        </div>
+
+        <div class="grid-2">
+          <article class="panel">
+            <div class="panel-head"><div><h3>Engagement Trend</h3><p>Estimated engagement over the session</p></div><span class="select">Last 45 min ▾</span></div>
+            <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><div><h3>Emotion Distribution</h3><p>Detected facial expressions</p></div></div>
+            <div class="emotion-list">
+              <div><div><span>Happy</span><b>38%</b></div><div class="bar"><i style="width:38%"></i></div></div>
+              <div><div><span>Neutral</span><b>26%</b></div><div class="bar"><i style="width:26%"></i></div></div>
+              <div><div><span>Surprised</span><b>12%</b></div><div class="bar"><i style="width:12%"></i></div></div>
+              <div><div><span>Sad</span><b>9%</b></div><div class="bar"><i style="width:9%"></i></div></div>
+              <div><div><span>Angry / Disgust / Fear</span><b>15%</b></div><div class="bar"><i style="width:15%"></i></div></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid-3">
+          <article class="panel compact">
+            <span class="panel-label">EYE GAZE</span>
+            <div class="big-number">78%</div>
+            <p>On-screen attention</p>
+            <div class="split-stat"><span>On screen <b>78%</b></span><span>Off screen <b>22%</b></span></div>
+          </article>
+          <article class="panel compact">
+            <span class="panel-label">EMOTION</span>
+            <div class="big-number">64%</div>
+            <p>Positive + neutral response</p>
+            <div class="split-stat"><span>Positive <b>50%</b></span><span>Neutral <b>14%</b></span></div>
+          </article>
+          <article class="panel compact">
+            <span class="panel-label">ATTENDANCE</span>
+            <div class="big-number">96%</div>
+            <p>Face detected in session</p>
+            <div class="split-stat"><span>Detected <b>96%</b></span><span>Missing <b>4%</b></span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="live" class="page-section">
+        <div class="section-heading"><span class="pill">REAL-TIME</span><h2>Live Engagement Analysis</h2><p>Use your webcam to run eye-gaze and emotion detection.</p></div>
+        <div class="live-layout">
+          <div class="camera-card">
+            <div class="camera-placeholder" id="cameraPlaceholder">
+              <div class="camera-ring">◉</div>
+              <h3>Camera Preview</h3>
+              <p>Connect this interface to the existing Python webcam scripts.</p>
+              <button class="primary-btn" id="startCamera">Start Camera</button>
+            </div>
+            <video id="camera" autoplay muted playsinline hidden></video>
+            <div class="camera-controls"><span id="cameraStatus">Camera inactive</span><button class="secondary-btn" id="stopCamera">Stop</button></div>
+          </div>
+          <div class="panel live-stats">
+            <div class="panel-head"><div><h3>Live Signals</h3><p>Frontend visualization layer</p></div><span class="live-badge"><i class="dot"></i> Ready</span></div>
+            <div class="signal"><div><span>Engagement</span><b id="liveEngagement">82%</b></div><div class="progress"><i style="width:82%"></i></div></div>
+            <div class="signal"><div><span>On-screen focus</span><b>78%</b></div><div class="progress"><i style="width:78%"></i></div></div>
+            <div class="signal"><div><span>Positive emotion</span><b>64%</b></div><div class="progress"><i style="width:64%"></i></div></div>
+            <div class="signal"><div><span>Face presence</span><b>96%</b></div><div class="progress"><i style="width:96%"></i></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="video" class="page-section">
+        <div class="section-heading"><span class="pill">VIDEO</span><h2>Analyze a Recorded Session</h2><p>The existing Python pipeline expects an input video and generates annotated outputs.</p></div>
+        <div class="upload-panel">
+          <div class="upload-icon">↑</div>
+          <h3>Drop your video here</h3>
+          <p>Supported flow: rename the input as <code>input.mov</code> for the existing scripts.</p>
+          <label class="primary-btn file-btn">Choose Video<input id="videoInput" type="file" accept="video/*"></label>
+          <div id="fileName" class="file-name">No video selected</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-card"><b>Eye Gaze Output</b><span>output_eyegaze.mp4</span></div>
+          <div class="info-card"><b>Emotion Output</b><span>output_emotion.mp4</span></div>
+          <div class="info-card"><b>Reports</b><span>resultEyegaze.txt · resultEmotion.txt</span></div>
+        </div>
+      </section>
+
+      <section id="reports" class="page-section">
+        <div class="section-heading"><span class="pill">REPORTS</span><h2>Analysis Reports</h2><p>Summary cards for your project demonstration.</p></div>
+        <div class="report-table panel">
+          <div class="table-row table-head"><span>Metric</span><span>Result</span><span>Status</span></div>
+          <div class="table-row"><span>Engagement</span><b>82%</b><em class="good">Good</em></div>
+          <div class="table-row"><span>On-screen gaze</span><b>78%</b><em class="good">Focused</em></div>
+          <div class="table-row"><span>Positive emotion</span><b>50%</b><em class="good">Positive</em></div>
+          <div class="table-row"><span>Neutral emotion</span><b>14%</b><em>Neutral</em></div>
+          <div class="table-row"><span>Face presence</span><b>96%</b><em class="good">Present</em></div>
+        </div>
+        <button class="secondary-btn" id="downloadReport">Download Demo Report</button>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

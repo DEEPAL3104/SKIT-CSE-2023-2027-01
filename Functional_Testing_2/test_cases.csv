@@ -1,0 +1,25 @@
+Test ID,Area,Scenario,Preconditions,Steps,Expected Result,Type,Priority
+FT2-001,Application startup,Open dashboard,Project files extracted,Open index.html in browser,Dashboard loads without a blank page,Manual,High
+FT2-002,Responsive layout,Use narrow viewport,Dashboard open,Resize browser to mobile width,Main content remains readable without severe overlap,Manual,Medium
+FT2-003,Navigation,Dashboard navigation,Dashboard open,Select Dashboard navigation item,Dashboard section is displayed,Manual,High
+FT2-004,Navigation,Live analysis navigation,Dashboard open,Select Live Analysis,Live analysis section or relevant panel is displayed,Manual,High
+FT2-005,Navigation,Video analysis navigation,Dashboard open,Select Video Analysis,Video analysis section or relevant panel is displayed,Manual,High
+FT2-006,Navigation,Reports navigation,Dashboard open,Select Reports,Reports section or relevant panel is displayed,Manual,High
+FT2-007,Video input,Select supported MP4,Test video available,Choose synthetic_test_video.mp4,UI accepts selection and shows an appropriate filename/preview response,Manual,High
+FT2-008,Video input,Select unsupported file,Dashboard open,Choose a text file if file picker permits,UI rejects or clearly handles unsupported input,Manual,Medium
+FT2-009,Video input,No file selected,Dashboard open,Trigger video analysis without selecting a file,UI explains that a file is required or safely does nothing,Manual,Medium
+FT2-010,Webcam,Permission denied,Camera available,Block browser camera permission,UI shows a clear error and remains usable,Manual,High
+FT2-011,Webcam,Permission granted,Camera available and browser permission allowed,Start preview,Camera preview appears if implemented and permission is granted,Manual,High
+FT2-012,Webcam,Camera unavailable,No camera or camera already in use,Start preview,UI handles failure without uncaught crash,Manual,Medium
+FT2-013,Reports,Download report,Dashboard open,Activate report download,File downloads and contains expected report structure,Manual,High
+FT2-014,Reports,Empty report state,No actual analysis performed,Open reports section,UI does not present demo values as verified real inference,Manual,Medium
+FT2-015,Assets,Stylesheet loading,Project files extracted,Open page and inspect computed styling,style.css loads,Automated/Manual,High
+FT2-016,Assets,JavaScript loading,Project files extracted,Open browser developer console,script.js loads without syntax/runtime errors on initial load,Manual,High
+FT2-017,Report generator,Python syntax,Python available,Run test runner,generate_report.py parses successfully,Automated,High
+FT2-018,Test data,Video file exists,Archive extracted,Run test runner,MP4 exists and is non-empty,Automated,High
+FT2-019,Test data,MP4 decoding,OpenCV installed,Run test runner,At least one frame can be decoded,Automated optional,Medium
+FT2-020,JavaScript,Node syntax check,Node.js installed,Run test runner,script.js passes node --check,Automated optional,Medium
+FT2-021,Accessibility,Keyboard navigation,Dashboard open,Tab through interactive controls,Focus is visible and controls are reachable,Manual,Medium
+FT2-022,Error handling,Refresh during idle state,Dashboard open,Refresh browser,Page returns to a usable initial state,Manual,Medium
+FT2-023,Data integrity,Demo metrics labeling,Dashboard open,Inspect dashboard metrics,Demo/sample values are not mistaken for live AI results,Manual,High
+FT2-024,File safety,Large video selection,Use a larger local video,Select video,UI remains responsive or reports any documented size limitation,Manual,Low
