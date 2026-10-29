@@ -1,0 +1,16 @@
+Test ID,Area,Test / Action,Expected Result,Execution Type
+SV-001,Project assets,"index.html, style.css, and script.js exist and are non-empty",All assets are present,Automated
+SV-002,HTML metadata,"Document declares language, charset, viewport, and title",Required metadata is present,Automated
+SV-003,Navigation targets,Each nav data-section maps to a page-section ID,All targets resolve,Automated
+SV-004,Local stylesheet,HTML stylesheet reference resolves locally,style.css exists,Automated
+SV-005,Local script,HTML JavaScript reference resolves locally,script.js exists,Automated
+SV-006,Dashboard sections,"Dashboard, live, video, and reports sections exist",All four sections exist,Automated
+SV-007,Navigation wiring,Script binds navigation clicks and section state,Expected event wiring exists,Automated
+SV-008,Chart canvas,Trend chart canvas is present and script references it,Canvas hook exists,Automated
+SV-009,Video controls,Video input and report controls are present,Expected controls exist,Automated
+SV-010,Accessibility basics,"Language, viewport, and canvas accessible name are present",Basic accessibility markers exist,Automated
+SV-011,Responsive styles,Stylesheet includes responsive media query,Responsive breakpoint exists,Automated
+SV-012,Browser smoke test,Open dashboard and visit all navigation sections,No console errors; sections display correctly,Manual
+SV-013,Camera integration,Test camera start/stop with permission granted and denied,Status is clear; no unhandled error,Manual / device
+SV-014,ML inference integration,Run approved sample video through actual model pipeline,Outputs match documented pipeline contract,Manual / model
+SV-015,Privacy review,"Confirm consent, retention, and access practices",Data handling is documented and appropriate,Manual
